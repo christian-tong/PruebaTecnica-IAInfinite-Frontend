@@ -1,27 +1,61 @@
-# PruebaTecnica
+# Proyecto de Registro de Clientes - Frontend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.8.
+Este proyecto es la parte del frontend de la aplicación para el registro de clientes, desarrollada en **Angular**. El frontend interactúa con los microservicios del backend para registrar clientes y generar un token de seguridad, siguiendo una arquitectura de microservicios.
 
-## Development server
+## Descripción del Proyecto
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+El proyecto permite que el usuario ingrese su información a través de un formulario de registro, incluyendo el nombre, correo electrónico y un token de seguridad generado previamente. El frontend se encarga de enviar estos datos al backend para su validación y posterior registro en la base de datos.
 
-## Code scaffolding
+## Diagrama de Arquitectura
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+![Diagrama de Arquitectura](./DiagramaCompleto.png)
 
-## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Requisitos para Ejecutar el Proyecto
 
-## Running unit tests
+- **Node.js**: v14 o superior.
+- **Angular CLI**: v17 o superior.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Instalación y Configuración
 
-## Running end-to-end tests
+### Paso 1: Clonar el Repositorio
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+```bash
+# Clonar el repositorio de GitHub
+git clone https://github.com/christian-tong/PruebaTecnica-IAInfinite-Frontend.git
+cd PruebaTecnica-IAInfinite-Frontend
+```
 
-## Further help
+### Paso 2: Instalar Dependencias
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+```bash
+npm install
+```
+
+### Paso 3: Ejecutar el Frontend
+
+Inicia el servidor Angular:
+
+```bash
+ng serve
+```
+
+El frontend estará disponible en `http://localhost:4200`.
+
+## Proceso de Registro
+
+1. El usuario completa el formulario con su nombre, correo y token de seguridad.
+2. El frontend solicita un token al microservicio de seguridad (GET `/token`).
+3. El usuario puede modificar el token y luego enviar sus datos.
+4. El backend valida el token y registra al cliente en la base de datos.
+5. Si la configuración lo permite, se envía una solicitud a RabbitMQ para registrar un correo de bienvenida.
+
+![Diagrama de Componentes de Angular](./Angular.png)
+
+## Contribuciones
+
+Las contribuciones son bienvenidas. Por favor, abre un issue primero para discutir los cambios que deseas realizar.
+
+## Licencia
+
+Este proyecto está bajo la licencia MIT. Consulta el archivo LICENSE para más detalles.
